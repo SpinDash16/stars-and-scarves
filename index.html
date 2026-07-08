@@ -290,28 +290,6 @@
     overflow: hidden;
     border-bottom: 3px solid var(--navy);
   }
-  .pk-strip .pk-label {
-    position: absolute;
-    top: 12px;
-    left: 24px;
-    font-family: var(--headline);
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--red);
-    z-index: 3;
-  }
-  .pk-strip .pk-caption {
-    position: absolute;
-    top: 12px;
-    right: 24px;
-    font-family: var(--body);
-    font-style: italic;
-    font-size: 13px;
-    color: var(--ink-soft);
-    z-index: 3;
-  }
   .pk-goal {
     position: absolute;
     right: 4%;
@@ -632,8 +610,6 @@
 </header>
 
 <section class="pk-strip" aria-label="Animated penalty kick scene">
-  <div class="pk-label">&#9733; The Eternal PK</div>
-  <div class="pk-caption">Attempt 4,092. He is due.</div>
   <div class="pk-goal"></div>
 
   <svg class="pk-striker" viewBox="0 0 78 112" xmlns="http://www.w3.org/2000/svg">
@@ -786,16 +762,11 @@
   var strip = document.querySelector('.pk-strip');
   if (!strip) return;
   var ball = strip.querySelector('.pk-ball');
-  var caption = strip.querySelector('.pk-caption');
-  var attempt = 4092;
+  var attempt = 0;
   ball.addEventListener('animationiteration', function (e) {
     if (e.animationName !== 'pk-ball-travel' && e.animationName !== 'pk-ball-goal') return;
     attempt++;
-    var isGoal = attempt % 10 === 0;
-    strip.classList.toggle('goal', isGoal);
-    caption.textContent = isGoal
-      ? 'Attempt ' + attempt.toLocaleString() + '. HE SCORED. Nobody move.'
-      : 'Attempt ' + attempt.toLocaleString() + '. He is due.';
+    strip.classList.toggle('goal', attempt % 10 === 0);
   });
 })();
 </script>
