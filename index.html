@@ -80,8 +80,7 @@
   .masthead {
     background: var(--cream);
     text-align: center;
-    padding: 44px 24px 30px;
-    border-bottom: 3px solid var(--navy);
+    padding: 44px 24px 6px;
   }
   .masthead .kicker {
     font-family: var(--headline);
@@ -283,64 +282,55 @@
   .card p { font-size: 15px; color: var(--ink-soft); margin-top: 10px; }
   .card .byline { margin-top: 12px; }
 
-  /* ---- The Eternal PK ---- */
+  /* ---- The Eternal PK (masthead line) ---- */
   .pk-strip {
     position: relative;
-    background: var(--navy-deep);
-    height: 210px;
+    background: var(--cream);
+    height: 122px;
     overflow: hidden;
-    border-top: 3px solid var(--navy);
+    border-bottom: 3px solid var(--navy);
   }
   .pk-strip .pk-label {
     position: absolute;
-    top: 16px;
+    top: 12px;
     left: 24px;
     font-family: var(--headline);
     font-size: 11px;
     font-weight: 900;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--red);
     z-index: 3;
   }
   .pk-strip .pk-caption {
     position: absolute;
-    top: 16px;
+    top: 12px;
     right: 24px;
     font-family: var(--body);
     font-style: italic;
     font-size: 13px;
-    color: #8FA0BE;
+    color: var(--ink-soft);
     z-index: 3;
-  }
-  .pk-pitch {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 34px;
-    background: repeating-linear-gradient(90deg, #1B5E3B 0 90px, #175234 90px 180px);
-    border-top: 2px solid rgba(248, 244, 236, 0.55);
   }
   .pk-goal {
     position: absolute;
     right: 4%;
-    bottom: 32px;
-    width: 130px;
-    height: 118px;
-    border-top: 6px solid var(--cream);
-    border-right: 6px solid var(--cream);
+    bottom: 0;
+    width: 104px;
+    height: 86px;
+    border-top: 5px solid var(--navy);
+    border-right: 5px solid var(--navy);
     background:
-      repeating-linear-gradient(0deg, rgba(248,244,236,0.14) 0 1px, transparent 1px 12px),
-      repeating-linear-gradient(90deg, rgba(248,244,236,0.14) 0 1px, transparent 1px 12px);
+      repeating-linear-gradient(0deg, rgba(11,30,63,0.18) 0 1px, transparent 1px 10px),
+      repeating-linear-gradient(90deg, rgba(11,30,63,0.18) 0 1px, transparent 1px 10px);
     z-index: 1;
   }
   .pk-striker {
     position: absolute;
-    left: 5%;
-    bottom: 30px;
-    width: 78px;
-    height: 112px;
+    left: 6%;
+    bottom: 0;
+    width: 60px;
+    height: 86px;
     z-index: 2;
     animation: pk-striker-hop 4s ease-in-out infinite;
   }
@@ -351,10 +341,10 @@
   }
   .pk-goalie {
     position: absolute;
-    right: calc(4% + 30px);
-    bottom: 32px;
-    width: 70px;
-    height: 104px;
+    right: calc(4% + 24px);
+    bottom: 0;
+    width: 56px;
+    height: 82px;
     z-index: 2;
     transform-origin: 50% 95%;
     animation: pk-dive 4s ease-in-out infinite;
@@ -362,9 +352,9 @@
   .pk-ball {
     position: absolute;
     left: 10%;
-    bottom: 36px;
-    width: 26px;
-    height: 26px;
+    bottom: 4px;
+    width: 20px;
+    height: 20px;
     z-index: 2;
     animation: pk-ball-travel 4s infinite;
   }
@@ -376,26 +366,57 @@
   }
   .pk-saved {
     position: absolute;
-    right: calc(4% + 90px);
-    bottom: 130px;
+    right: calc(4% + 70px);
+    bottom: 88px;
     font-family: var(--headline);
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 900;
     letter-spacing: 0.06em;
-    color: var(--gold);
+    color: var(--red);
     text-transform: uppercase;
     transform: rotate(-8deg);
     opacity: 0;
     z-index: 3;
     animation: pk-saved-pop 4s ease-out infinite;
   }
+  .pk-goaltext {
+    position: absolute;
+    right: calc(4% + 40px);
+    bottom: 74px;
+    font-family: var(--headline);
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: var(--red);
+    text-transform: uppercase;
+    transform: rotate(-6deg);
+    opacity: 0;
+    z-index: 3;
+  }
+  /* goal cycle overrides (toggled by JS every 10th attempt) */
+  .pk-strip.goal .pk-ball { animation-name: pk-ball-goal; }
+  .pk-strip.goal .pk-goalie { animation-name: pk-dive-wrong; }
+  .pk-strip.goal .pk-saved { animation: none; opacity: 0; }
+  .pk-strip.goal .pk-striker { animation-name: pk-celebrate; }
+  .pk-strip.goal .pk-goaltext { animation: pk-goaltext-pop 4s ease-out infinite; }
   @keyframes pk-ball-travel {
-    0%, 12% { left: 10%; bottom: 36px; }
-    24%     { left: 45%; bottom: 96px; }
-    38%     { left: calc(96% - 190px); bottom: 64px; }
-    41%     { left: calc(96% - 172px); bottom: 58px; }
-    55%     { left: 55%; bottom: 88px; }
-    70%, 100% { left: 10%; bottom: 36px; }
+    0%, 12% { left: 10%; bottom: 4px; }
+    24%     { left: 45%; bottom: 64px; }
+    38%     { left: calc(96% - 150px); bottom: 34px; }
+    41%     { left: calc(96% - 136px); bottom: 30px; }
+    55%     { left: 55%; bottom: 58px; }
+    70%, 100% { left: 10%; bottom: 4px; }
+  }
+  @keyframes pk-ball-goal {
+    0%, 12% { left: 10%; bottom: 4px; opacity: 1; }
+    24%     { left: 45%; bottom: 64px; opacity: 1; }
+    38%     { left: calc(96% - 150px); bottom: 34px; opacity: 1; }
+    44%     { left: calc(96% - 42px); bottom: 12px; opacity: 1; }
+    46%     { left: calc(96% - 34px); bottom: 10px; opacity: 1; }
+    48%, 88% { left: calc(96% - 40px); bottom: 8px; opacity: 1; }
+    93%     { left: calc(96% - 40px); bottom: 8px; opacity: 0; }
+    94%     { left: 10%; bottom: 4px; opacity: 0; }
+    98%, 100% { left: 10%; bottom: 4px; opacity: 1; }
   }
   @keyframes pk-ball-spin {
     0%, 12% { transform: rotate(0deg); }
@@ -410,20 +431,42 @@
   }
   @keyframes pk-striker-hop {
     0%, 66% { transform: translateY(0); }
-    70%     { transform: translateY(-8px); }
+    70%     { transform: translateY(-6px); }
     74%, 100% { transform: translateY(0); }
+  }
+  @keyframes pk-celebrate {
+    0%, 46% { transform: translateY(0); }
+    52%     { transform: translateY(-14px); }
+    58%     { transform: translateY(0); }
+    64%     { transform: translateY(-14px); }
+    70%     { transform: translateY(0); }
+    76%     { transform: translateY(-9px); }
+    82%, 100% { transform: translateY(0); }
   }
   @keyframes pk-dive {
     0%, 30% { transform: translate(0, 0) rotate(0deg); }
-    38%     { transform: translate(-16px, -10px) rotate(-16deg); }
-    44%     { transform: translate(-16px, -4px) rotate(-12deg); }
+    38%     { transform: translate(-13px, -8px) rotate(-16deg); }
+    44%     { transform: translate(-13px, -3px) rotate(-12deg); }
     58%, 100% { transform: translate(0, 0) rotate(0deg); }
+  }
+  @keyframes pk-dive-wrong {
+    0%, 30% { transform: translate(0, 0) rotate(0deg); }
+    38%     { transform: translate(16px, -6px) rotate(20deg); }
+    50%     { transform: translate(20px, 2px) rotate(26deg); }
+    70%, 100% { transform: translate(0, 0) rotate(0deg); }
   }
   @keyframes pk-saved-pop {
     0%, 38% { opacity: 0; transform: rotate(-8deg) scale(0.6); }
     43%     { opacity: 1; transform: rotate(-8deg) scale(1.15); }
     50%     { opacity: 1; transform: rotate(-8deg) scale(1); }
     60%, 100% { opacity: 0; transform: rotate(-8deg) scale(1); }
+  }
+  @keyframes pk-goaltext-pop {
+    0%, 44% { opacity: 0; transform: rotate(-6deg) scale(0.5); }
+    50%     { opacity: 1; transform: rotate(-6deg) scale(1.25); }
+    56%     { opacity: 1; transform: rotate(-6deg) scale(1); }
+    88%     { opacity: 1; transform: rotate(-6deg) scale(1); }
+    96%, 100% { opacity: 0; transform: rotate(-6deg) scale(1); }
   }
   @media (prefers-reduced-motion: reduce) {
     .pk-strip * { animation: none !important; }
@@ -588,6 +631,67 @@
   <div class="tagline">Where American soccer argues.</div>
 </header>
 
+<section class="pk-strip" aria-label="Animated penalty kick scene">
+  <div class="pk-label">&#9733; The Eternal PK</div>
+  <div class="pk-caption">Attempt 4,092. He is due.</div>
+  <div class="pk-goal"></div>
+
+  <svg class="pk-striker" viewBox="0 0 78 112" xmlns="http://www.w3.org/2000/svg">
+    <!-- standing leg -->
+    <path d="M34 62 L31 96" stroke="#0B1E3F" stroke-width="9" stroke-linecap="round"/>
+    <path d="M31 96 L40 100" stroke="#C8102E" stroke-width="9" stroke-linecap="round"/>
+    <!-- kicking leg -->
+    <g class="kick-leg">
+      <path d="M40 62 L52 92" stroke="#0B1E3F" stroke-width="9" stroke-linecap="round"/>
+      <path d="M52 92 L63 94" stroke="#C8102E" stroke-width="9" stroke-linecap="round"/>
+    </g>
+    <!-- shorts -->
+    <path d="M28 52 L46 52 L44 66 L30 66 Z" fill="#F8F4EC" stroke="#0B1E3F" stroke-width="2"/>
+    <!-- jersey -->
+    <path d="M27 24 L47 24 L50 54 L24 54 Z" fill="#C8102E" stroke="#0B1E3F" stroke-width="2.5"/>
+    <!-- arms -->
+    <path d="M27 30 L14 46" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/>
+    <path d="M47 30 L62 40" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/>
+    <!-- head -->
+    <circle cx="37" cy="13" r="10" fill="#E8B98F" stroke="#0B1E3F" stroke-width="2.5"/>
+    <!-- number -->
+    <text x="37" y="45" text-anchor="middle" font-family="Arial Black, Arial" font-size="14" font-weight="900" fill="#F8F4EC">10</text>
+  </svg>
+
+  <svg class="pk-goalie" viewBox="0 0 70 104" xmlns="http://www.w3.org/2000/svg">
+    <!-- legs -->
+    <path d="M28 58 L22 92" stroke="#0B1E3F" stroke-width="8" stroke-linecap="round"/>
+    <path d="M40 58 L46 92" stroke="#0B1E3F" stroke-width="8" stroke-linecap="round"/>
+    <path d="M22 92 L14 95" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/>
+    <path d="M46 92 L54 95" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/>
+    <!-- jersey -->
+    <path d="M24 22 L44 22 L48 52 L20 52 Z" fill="#E8B94A" stroke="#0B1E3F" stroke-width="2.5"/>
+    <!-- arms spread wide -->
+    <path d="M24 28 L6 14" stroke="#E8B94A" stroke-width="8" stroke-linecap="round"/>
+    <path d="M44 28 L62 14" stroke="#E8B94A" stroke-width="8" stroke-linecap="round"/>
+    <!-- gloves -->
+    <circle cx="5" cy="12" r="6.5" fill="#C8102E"/>
+    <circle cx="63" cy="12" r="6.5" fill="#C8102E"/>
+    <!-- head -->
+    <circle cx="34" cy="11" r="9.5" fill="#E8B98F" stroke="#0B1E3F" stroke-width="2.5"/>
+    <!-- number -->
+    <text x="34" y="42" text-anchor="middle" font-family="Arial Black, Arial" font-size="13" font-weight="900" fill="#0B1E3F">1</text>
+  </svg>
+
+  <div class="pk-ball">
+    <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="13" cy="13" r="12" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="1.5"/>
+      <polygon points="13,7 18,11 16,17 10,17 8,11" fill="#C8102E"/>
+      <circle cx="4.5" cy="10" r="2.4" fill="#C8102E"/>
+      <circle cx="21.5" cy="10" r="2.4" fill="#C8102E"/>
+      <circle cx="13" cy="23" r="2.4" fill="#C8102E"/>
+    </svg>
+  </div>
+
+  <div class="pk-saved">Saved!</div>
+  <div class="pk-goaltext">Goal!</div>
+</section>
+
 <nav>
   <ul class="wrap">
     <li><a class="hot" href="#">World Cup 2026</a></li>
@@ -645,67 +749,6 @@
     </section>
   </div>
 
-  <section class="pk-strip" aria-label="Animated penalty kick scene">
-    <div class="pk-label">&#9733; Halftime Entertainment</div>
-    <div class="pk-caption">Attempt 4,092. He is due.</div>
-    <div class="pk-pitch"></div>
-    <div class="pk-goal"></div>
-
-    <svg class="pk-striker" viewBox="0 0 78 112" xmlns="http://www.w3.org/2000/svg">
-      <!-- standing leg -->
-      <path d="M34 62 L31 96" stroke="#F8F4EC" stroke-width="9" stroke-linecap="round"/>
-      <path d="M31 96 L40 100" stroke="#0B1E3F" stroke-width="9" stroke-linecap="round"/>
-      <!-- kicking leg -->
-      <g class="kick-leg">
-        <path d="M40 62 L52 92" stroke="#F8F4EC" stroke-width="9" stroke-linecap="round"/>
-        <path d="M52 92 L63 94" stroke="#0B1E3F" stroke-width="9" stroke-linecap="round"/>
-      </g>
-      <!-- shorts -->
-      <path d="M28 52 L46 52 L44 66 L30 66 Z" fill="#F8F4EC"/>
-      <!-- jersey -->
-      <path d="M27 24 L47 24 L50 54 L24 54 Z" fill="#C8102E" stroke="#F8F4EC" stroke-width="2.5"/>
-      <!-- arms -->
-      <path d="M27 30 L14 46" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/>
-      <path d="M47 30 L62 40" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/>
-      <!-- head -->
-      <circle cx="37" cy="13" r="10" fill="#E8B98F" stroke="#F8F4EC" stroke-width="2.5"/>
-      <!-- number -->
-      <text x="37" y="45" text-anchor="middle" font-family="Arial Black, Arial" font-size="14" font-weight="900" fill="#F8F4EC">10</text>
-    </svg>
-
-    <svg class="pk-goalie" viewBox="0 0 70 104" xmlns="http://www.w3.org/2000/svg">
-      <!-- legs -->
-      <path d="M28 58 L22 92" stroke="#F8F4EC" stroke-width="8" stroke-linecap="round"/>
-      <path d="M40 58 L46 92" stroke="#F8F4EC" stroke-width="8" stroke-linecap="round"/>
-      <path d="M22 92 L14 95" stroke="#0B1E3F" stroke-width="8" stroke-linecap="round"/>
-      <path d="M46 92 L54 95" stroke="#0B1E3F" stroke-width="8" stroke-linecap="round"/>
-      <!-- jersey -->
-      <path d="M24 22 L44 22 L48 52 L20 52 Z" fill="#E8B94A" stroke="#0B1E3F" stroke-width="2.5"/>
-      <!-- arms spread wide -->
-      <path d="M24 28 L6 14" stroke="#E8B94A" stroke-width="8" stroke-linecap="round"/>
-      <path d="M44 28 L62 14" stroke="#E8B94A" stroke-width="8" stroke-linecap="round"/>
-      <!-- gloves -->
-      <circle cx="5" cy="12" r="6.5" fill="#F8F4EC"/>
-      <circle cx="63" cy="12" r="6.5" fill="#F8F4EC"/>
-      <!-- head -->
-      <circle cx="34" cy="11" r="9.5" fill="#E8B98F" stroke="#F8F4EC" stroke-width="2.5"/>
-      <!-- number -->
-      <text x="34" y="42" text-anchor="middle" font-family="Arial Black, Arial" font-size="13" font-weight="900" fill="#0B1E3F">1</text>
-    </svg>
-
-    <div class="pk-ball">
-      <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="13" cy="13" r="12" fill="#F8F4EC" stroke="#0B1E3F" stroke-width="1.5"/>
-        <polygon points="13,7 18,11 16,17 10,17 8,11" fill="#C8102E"/>
-        <circle cx="4.5" cy="10" r="2.4" fill="#C8102E"/>
-        <circle cx="21.5" cy="10" r="2.4" fill="#C8102E"/>
-        <circle cx="13" cy="23" r="2.4" fill="#C8102E"/>
-      </svg>
-    </div>
-
-    <div class="pk-saved">Saved!</div>
-  </section>
-
   <section class="section-band" id="section">
     <div class="wrap">
       <div>
@@ -737,6 +780,24 @@
   <div>Pensacola, Florida &nbsp;&bull;&nbsp; Independent American soccer journal &nbsp;&bull;&nbsp; Est. 2026</div>
   <div class="note">Homepage mockup. Not live yet. All headlines are brand-voice samples.</div>
 </footer>
+
+<script>
+(function () {
+  var strip = document.querySelector('.pk-strip');
+  if (!strip) return;
+  var ball = strip.querySelector('.pk-ball');
+  var caption = strip.querySelector('.pk-caption');
+  var attempt = 4092;
+  ball.addEventListener('animationiteration', function () {
+    attempt++;
+    var isGoal = attempt % 10 === 0;
+    strip.classList.toggle('goal', isGoal);
+    caption.textContent = isGoal
+      ? 'Attempt ' + attempt.toLocaleString() + '. HE SCORED. Nobody move.'
+      : 'Attempt ' + attempt.toLocaleString() + '. He is due.';
+  });
+})();
+</script>
 
 </body>
 </html>
