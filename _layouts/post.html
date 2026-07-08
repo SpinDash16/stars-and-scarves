@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<article>
+  <div class="article-head">
+    <span class="cat-tag">{{ page.categories | first | upcase | default: "TAKES" }}</span>
+    <h1>{{ page.title }}</h1>
+    {% if page.standfirst %}<p class="standfirst">{{ page.standfirst }}</p>{% endif %}
+    <p class="byline">By <strong>{{ page.author }}</strong> &nbsp;&bull;&nbsp; {{ page.date | date: "%B %-d, %Y" }} &nbsp;&bull;&nbsp; {{ content | number_of_words | divided_by: 200 | plus: 1 }} min read</p>
+  </div>
+  <div class="article-body">
+    {{ content }}
+    <a class="back-link" href="/">&larr; Back to the front page</a>
+  </div>
+</article>
+
+<section class="newsletter" id="newsletter">
+  <h3>The Sunday Scarf</h3>
+  <p>Liked this one? One email every Sunday morning: the week in American soccer and the take you will be arguing about by Tuesday. Free forever.</p>
+  <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='You\'re In &#9733;';">
+    <input type="email" placeholder="your@email.com" required>
+    <button type="submit">Sign Me Up</button>
+  </form>
+</section>

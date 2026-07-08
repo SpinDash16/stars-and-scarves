@@ -1,0 +1,19 @@
+title: Stars and Scarves
+tagline: Where American soccer argues.
+description: An opinionated American soccer journal covering the USMNT, MLS, and the American game. Written in Pensacola, read everywhere.
+url: "https://starsandscarves.com"
+timezone: America/Chicago
+permalink: /:categories/:title/
+markdown: kramdown
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Derek Benson"
+
+exclude:
+  - PUBLISHING.md
+  - README.md

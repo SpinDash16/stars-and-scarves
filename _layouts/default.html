@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.title %}{{ page.title }} | Stars and Scarves{% else %}Stars and Scarves | Where American Soccer Argues{% endif %}</title>
+<meta name="description" content="{{ page.standfirst | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,600;0,800;0,900;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<div class="scarf-stripe"></div>
+
+<div class="topbar">
+  <div class="wrap">
+    <span id="topbar-date"></span>
+    <div class="right">
+      <span>Pensacola, FL &nbsp;&bull;&nbsp; Est. 2026</span>
+      <a class="btn-news" href="/#newsletter">Get The Sunday Scarf</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="kicker">USMNT &nbsp;&bull;&nbsp; MLS &nbsp;&bull;&nbsp; The American Game</div>
+  <h1><a href="/">Stars<span class="star">&#9733;</span><span class="amp">&amp;</span><span class="star">&#9733;</span>Scarves</a></h1>
+  <div class="tagline">Where American soccer argues.</div>
+</header>
+
+<section class="pk-strip" aria-label="Animated penalty kick scene">
+  <div class="pk-goal"></div>
+
+  <svg class="pk-striker" viewBox="0 0 78 112" xmlns="http://www.w3.org/2000/svg">
+    <path d="M34 62 L31 96" stroke="#0B1E3F" stroke-width="9" stroke-linecap="round"/>
+    <path d="M31 96 L40 100" stroke="#C8102E" stroke-width="9" stroke-linecap="round"/>
+    <g class="kick-leg">
+      <path d="M40 62 L52 92" stroke="#0B1E3F" stroke-width="9" stroke-linecap="round"/>
+      <path d="M52 92 L63 94" stroke="#C8102E" stroke-width="9" stroke-linecap="round"/>
+    </g>
+    <path d="M28 52 L46 52 L44 66 L30 66 Z" fill="#F8F4EC" stroke="#0B1E3F" stroke-width="2"/>
+    <path d="M27 24 L47 24 L50 54 L24 54 Z" fill="#C8102E" stroke="#0B1E3F" stroke-width="2.5"/>
+    <path d="M27 30 L14 46" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/>
+    <path d="M47 30 L62 40" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="37" cy="13" r="10" fill="#E8B98F" stroke="#0B1E3F" stroke-width="2.5"/>
+    <text x="37" y="45" text-anchor="middle" font-family="Arial Black, Arial" font-size="14" font-weight="900" fill="#F8F4EC">10</text>
+  </svg>
+
+  <svg class="pk-goalie" viewBox="0 0 70 104" xmlns="http://www.w3.org/2000/svg">
+    <path d="M28 58 L22 92" stroke="#0B1E3F" stroke-width="8" stroke-linecap="round"/>
+    <path d="M40 58 L46 92" stroke="#0B1E3F" stroke-width="8" stroke-linecap="round"/>
+    <path d="M22 92 L14 95" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/>
+    <path d="M46 92 L54 95" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/>
+    <path d="M24 22 L44 22 L48 52 L20 52 Z" fill="#E8B94A" stroke="#0B1E3F" stroke-width="2.5"/>
+    <path d="M24 28 L6 14" stroke="#E8B94A" stroke-width="8" stroke-linecap="round"/>
+    <path d="M44 28 L62 14" stroke="#E8B94A" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="5" cy="12" r="6.5" fill="#C8102E"/>
+    <circle cx="63" cy="12" r="6.5" fill="#C8102E"/>
+    <circle cx="34" cy="11" r="9.5" fill="#E8B98F" stroke="#0B1E3F" stroke-width="2.5"/>
+    <text x="34" y="42" text-anchor="middle" font-family="Arial Black, Arial" font-size="13" font-weight="900" fill="#0B1E3F">1</text>
+  </svg>
+
+  <div class="pk-ball">
+    <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="13" cy="13" r="12" fill="#FFFFFF" stroke="#0B1E3F" stroke-width="1.5"/>
+      <polygon points="13,7 18,11 16,17 10,17 8,11" fill="#C8102E"/>
+      <circle cx="4.5" cy="10" r="2.4" fill="#C8102E"/>
+      <circle cx="21.5" cy="10" r="2.4" fill="#C8102E"/>
+      <circle cx="13" cy="23" r="2.4" fill="#C8102E"/>
+    </svg>
+  </div>
+
+  <div class="pk-saved">Saved!</div>
+  <div class="pk-goaltext">Goal!</div>
+</section>
+
+<nav>
+  <ul class="wrap">
+    <li><a class="hot" href="/">World Cup 2026</a></li>
+    <li><a href="/">USMNT</a></li>
+    <li><a href="/">MLS</a></li>
+    <li><a href="/">Takes</a></li>
+    <li><a href="/#section">The Section</a></li>
+    <li><a href="/#newsletter">Newsletter</a></li>
+    <li><a href="/">About</a></li>
+  </ul>
+</nav>
+
+{{ content }}
+
+<footer>
+  <div class="mark">Stars <span class="star">&#9733;</span> and <span class="star">&#9733;</span> Scarves</div>
+  <div>Pensacola, Florida &nbsp;&bull;&nbsp; Independent American soccer journal &nbsp;&bull;&nbsp; Est. 2026</div>
+</footer>
+
+<script>
+(function () {
+  var d = document.getElementById('topbar-date');
+  if (d) d.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  var strip = document.querySelector('.pk-strip');
+  if (!strip) return;
+  var ball = strip.querySelector('.pk-ball');
+  var attempt = 0;
+  ball.addEventListener('animationiteration', function (e) {
+    if (e.animationName !== 'pk-ball-travel' && e.animationName !== 'pk-ball-goal') return;
+    attempt++;
+    strip.classList.toggle('goal', attempt % 10 === 0);
+  });
+})();
+</script>
+
+</body>
+</html>
