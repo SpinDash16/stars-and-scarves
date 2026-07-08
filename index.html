@@ -310,7 +310,8 @@
     width: 60px;
     height: 86px;
     z-index: 2;
-    animation: pk-striker-hop 4s ease-in-out infinite;
+    transform-origin: 50% 100%;
+    animation: pk-striker-move 4s ease-in-out infinite;
   }
   .pk-striker .kick-leg {
     transform-box: fill-box;
@@ -402,36 +403,70 @@
     70%, 100% { transform: rotate(0deg); }
   }
   @keyframes pk-kick {
-    0%, 2%  { transform: rotate(0deg); }
-    7%      { transform: rotate(-55deg); }
-    12%     { transform: rotate(70deg); }
-    22%, 100% { transform: rotate(0deg); }
+    0%, 4%  { transform: rotate(0deg); animation-timing-function: ease-in; }
+    9%      { transform: rotate(-70deg); animation-timing-function: cubic-bezier(0.6, 0, 0.9, 0.4); }
+    12%     { transform: rotate(70deg); animation-timing-function: ease-out; }
+    16%     { transform: rotate(92deg); animation-timing-function: ease-in-out; }
+    30%, 100% { transform: rotate(0deg); }
   }
-  @keyframes pk-striker-hop {
-    0%, 66% { transform: translateY(0); }
-    70%     { transform: translateY(-6px); }
-    74%, 100% { transform: translateY(0); }
+  @keyframes pk-striker-move {
+    0%      { transform: translate(-16px, 0) rotate(0deg); }
+    5%      { transform: translate(-16px, 0) rotate(2deg); }
+    9%      { transform: translate(-5px, 0) rotate(9deg); }
+    12%     { transform: translate(0, 0) rotate(-9deg); }
+    17%     { transform: translate(2px, 0) rotate(-5deg); }
+    26%     { transform: translate(0, 0) rotate(0deg); }
+    66%     { transform: translate(0, 0) rotate(0deg); }
+    70%     { transform: translate(0, -6px) rotate(0deg); }
+    74%     { transform: translate(0, 0) rotate(0deg); }
+    88%, 100% { transform: translate(-16px, 0) rotate(0deg); }
   }
   @keyframes pk-celebrate {
-    0%, 46% { transform: translateY(0); }
-    52%     { transform: translateY(-14px); }
-    58%     { transform: translateY(0); }
-    64%     { transform: translateY(-14px); }
-    70%     { transform: translateY(0); }
-    76%     { transform: translateY(-9px); }
-    82%, 100% { transform: translateY(0); }
+    0%      { transform: translate(-16px, 0) rotate(0deg); }
+    5%      { transform: translate(-16px, 0) rotate(2deg); }
+    9%      { transform: translate(-5px, 0) rotate(9deg); }
+    12%     { transform: translate(0, 0) rotate(-9deg); }
+    17%     { transform: translate(2px, 0) rotate(-5deg); }
+    26%     { transform: translate(0, 0) rotate(0deg); }
+    46%     { transform: translate(0, 0) rotate(0deg); }
+    52%     { transform: translate(0, -16px) rotate(0deg); }
+    58%     { transform: translate(0, 0) rotate(0deg); }
+    64%     { transform: translate(0, -16px) rotate(0deg); }
+    70%     { transform: translate(0, 0) rotate(0deg); }
+    76%     { transform: translate(0, -10px) rotate(0deg); }
+    82%     { transform: translate(0, 0) rotate(0deg); }
+    92%, 100% { transform: translate(-16px, 0) rotate(0deg); }
   }
   @keyframes pk-dive {
-    0%, 30% { transform: translate(0, 0) rotate(0deg); }
+    0%      { transform: translate(0, 0) rotate(0deg); }
+    5%      { transform: translate(0, -6px) rotate(0deg); }
+    10%     { transform: translate(0, 0) rotate(0deg); }
+    15%     { transform: translate(0, -6px) rotate(0deg); }
+    20%     { transform: translate(0, 0) rotate(0deg); }
+    25%     { transform: translate(0, -5px) rotate(0deg); }
+    29%     { transform: translate(0, 0) rotate(0deg); }
+    33%     { transform: translate(0, 2px) rotate(0deg) scale(0.96); animation-timing-function: ease-in; }
     38%     { transform: translate(-13px, -8px) rotate(-16deg); }
     44%     { transform: translate(-13px, -3px) rotate(-12deg); }
-    58%, 100% { transform: translate(0, 0) rotate(0deg); }
+    58%     { transform: translate(0, 0) rotate(0deg); }
+    74%     { transform: translate(0, 0) rotate(0deg); }
+    80%     { transform: translate(0, -4px) rotate(0deg); }
+    86%, 100% { transform: translate(0, 0) rotate(0deg); }
   }
   @keyframes pk-dive-wrong {
-    0%, 30% { transform: translate(0, 0) rotate(0deg); }
+    0%      { transform: translate(0, 0) rotate(0deg); }
+    5%      { transform: translate(0, -6px) rotate(0deg); }
+    10%     { transform: translate(0, 0) rotate(0deg); }
+    15%     { transform: translate(0, -6px) rotate(0deg); }
+    20%     { transform: translate(0, 0) rotate(0deg); }
+    25%     { transform: translate(0, -5px) rotate(0deg); }
+    29%     { transform: translate(0, 0) rotate(0deg); }
+    33%     { transform: translate(0, 2px) rotate(0deg) scale(0.96); animation-timing-function: ease-in; }
     38%     { transform: translate(16px, -6px) rotate(20deg); }
     50%     { transform: translate(20px, 2px) rotate(26deg); }
-    70%, 100% { transform: translate(0, 0) rotate(0deg); }
+    70%     { transform: translate(0, 0) rotate(0deg); }
+    80%     { transform: translate(0, -4px) rotate(0deg); }
+    86%, 100% { transform: translate(0, 0) rotate(0deg); }
   }
   @keyframes pk-saved-pop {
     0%, 38% { opacity: 0; transform: rotate(-8deg) scale(0.6); }
