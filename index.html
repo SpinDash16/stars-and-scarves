@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stars and Scarves | Where American Soccer Argues</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,600;0,800;0,900;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1E3F;
+    --navy-deep: #071530;
+    --red: #C8102E;
+    --red-dark: #A00D25;
+    --cream: #F8F4EC;
+    --paper: #FDFBF6;
+    --ink: #1A2438;
+    --ink-soft: #4A5568;
+    --gold: #E8B94A;
+    --rule: #D8D2C4;
+    --headline: 'Libre Franklin', 'Franklin Gothic Medium', Arial, sans-serif;
+    --body: 'Lora', Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---- Scarf stripe motif ---- */
+  .scarf-stripe {
+    height: 10px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--red) 0 64px,
+      var(--cream) 64px 80px,
+      var(--navy) 80px 144px,
+      var(--cream) 144px 160px
+    );
+  }
+
+  /* ---- Top bar ---- */
+  .topbar {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: var(--headline);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .topbar .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    gap: 16px;
+  }
+  .topbar .right { display: flex; align-items: center; gap: 20px; }
+  .topbar .btn-news {
+    background: var(--red);
+    color: #fff;
+    padding: 6px 14px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    transition: background 0.15s;
+  }
+  .topbar .btn-news:hover { background: var(--red-dark); }
+
+  /* ---- Masthead ---- */
+  .masthead {
+    background: var(--cream);
+    text-align: center;
+    padding: 44px 24px 30px;
+    border-bottom: 3px solid var(--navy);
+  }
+  .masthead .kicker {
+    font-family: var(--headline);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .masthead h1 {
+    font-family: var(--headline);
+    font-weight: 900;
+    font-size: clamp(42px, 7.5vw, 84px);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    color: var(--navy);
+    text-transform: uppercase;
+  }
+  .masthead h1 .amp {
+    color: var(--red);
+    font-weight: 800;
+    padding: 0 0.08em;
+  }
+  .masthead .star { color: var(--gold); font-size: 0.55em; vertical-align: 0.35em; padding: 0 0.3em; }
+  .masthead .tagline {
+    font-family: var(--body);
+    font-style: italic;
+    font-size: clamp(15px, 2vw, 19px);
+    color: var(--ink-soft);
+    margin-top: 14px;
+  }
+
+  /* ---- Nav ---- */
+  nav {
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+  nav a {
+    display: block;
+    font-family: var(--headline);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    color: var(--navy);
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  nav a:hover { border-color: var(--red); color: var(--red); }
+  nav a.hot { color: var(--red); }
+
+  /* ---- Hero ---- */
+  .hero { padding: 56px 0 48px; border-bottom: 1px solid var(--rule); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .cat-tag {
+    display: inline-block;
+    font-family: var(--headline);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--red);
+    padding: 4px 10px;
+    margin-bottom: 16px;
+  }
+  .cat-tag.navy { background: var(--navy); }
+  .hero h2 {
+    font-family: var(--headline);
+    font-weight: 900;
+    font-size: clamp(30px, 4.6vw, 52px);
+    line-height: 1.05;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .hero h2 a:hover { color: var(--red); }
+  .hero .standfirst {
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin-top: 18px;
+    max-width: 58ch;
+  }
+  .byline {
+    font-family: var(--headline);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 20px;
+  }
+  .byline strong { color: var(--red); font-weight: 800; }
+
+  .hero-art {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 34px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-art::after {
+    content: "★";
+    position: absolute;
+    right: -20px;
+    bottom: -46px;
+    font-size: 180px;
+    color: rgba(232, 185, 74, 0.16);
+    line-height: 1;
+  }
+  .hero-art .label {
+    font-family: var(--headline);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .hero-art .big {
+    font-family: var(--headline);
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .hero-art p { font-size: 15px; margin-top: 14px; color: #C9D3E6; position: relative; z-index: 1; }
+  .hero-art .count {
+    font-family: var(--headline);
+    font-weight: 900;
+    font-size: 54px;
+    color: #fff;
+    line-height: 1;
+    margin-top: 18px;
+  }
+  .hero-art .count small {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    margin-top: 6px;
+  }
+
+  /* ---- Section heads ---- */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 48px 0 28px;
+  }
+  .section-head h3 {
+    font-family: var(--headline);
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+  .section-head h3 .star { color: var(--red); margin-right: 8px; }
+  .section-head .line { flex: 1; height: 3px; background: var(--navy); }
+
+  /* ---- Article grid ---- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    padding-bottom: 56px;
+  }
+  .card { border-top: 3px solid var(--navy); padding-top: 18px; }
+  .card:nth-child(2) { border-top-color: var(--red); }
+  .card:nth-child(3) { border-top-color: var(--gold); }
+  .card h4 {
+    font-family: var(--headline);
+    font-weight: 900;
+    font-size: 21px;
+    line-height: 1.18;
+    color: var(--navy);
+    margin-top: 4px;
+  }
+  .card h4 a:hover { color: var(--red); }
+  .card p { font-size: 15px; color: var(--ink-soft); margin-top: 10px; }
+  .card .byline { margin-top: 12px; }
+
+  /* ---- The Section (watch club) ---- */
+  .section-band {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 60px 0;
+  }
+  .section-band .wrap {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .section-band .label {
+    font-family: var(--headline);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .section-band h3 {
+    font-family: var(--headline);
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.08;
+    text-transform: uppercase;
+  }
+  .section-band p { margin-top: 16px; font-size: 17px; color: #C9D3E6; max-width: 52ch; }
+  .party-card {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 28px;
+    border-left: 6px solid var(--red);
+  }
+  .party-card .label {
+    color: var(--red);
+    font-family: var(--headline);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .party-card h4 {
+    font-family: var(--headline);
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--navy);
+    margin-top: 8px;
+    line-height: 1.15;
+  }
+  .party-card p { font-size: 15px; color: var(--ink-soft); margin-top: 10px; }
+  .party-card .btn {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--headline);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 11px 22px;
+    margin-top: 18px;
+    transition: background 0.15s;
+  }
+  .party-card .btn:hover { background: var(--red); }
+
+  /* ---- Newsletter ---- */
+  .newsletter {
+    background: var(--red);
+    color: #fff;
+    text-align: center;
+    padding: 56px 24px;
+  }
+  .newsletter h3 {
+    font-family: var(--headline);
+    font-weight: 900;
+    font-size: clamp(26px, 3.6vw, 38px);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .newsletter p { margin-top: 12px; font-size: 17px; color: #FBD9DF; max-width: 60ch; margin-left: auto; margin-right: auto; }
+  .newsletter form {
+    margin-top: 26px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .newsletter input {
+    font-family: var(--body);
+    font-size: 16px;
+    padding: 13px 18px;
+    border: none;
+    width: min(360px, 80vw);
+  }
+  .newsletter button {
+    font-family: var(--headline);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    padding: 13px 26px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .newsletter button:hover { background: var(--navy-deep); }
+
+  /* ---- Footer ---- */
+  footer {
+    background: var(--navy-deep);
+    color: #8FA0BE;
+    padding: 40px 24px;
+    text-align: center;
+    font-family: var(--headline);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  footer .mark {
+    font-weight: 900;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  footer .mark .star { color: var(--gold); }
+  footer .note { margin-top: 14px; font-style: normal; color: #5E7095; }
+
+  @media (max-width: 860px) {
+    .hero-grid, .section-band .wrap { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+    .topbar .right span { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scarf-stripe"></div>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>Monday, July 7, 2026</span>
+    <div class="right">
+      <span>Pensacola, FL &nbsp;&bull;&nbsp; Est. 2026</span>
+      <a class="btn-news" href="#newsletter">Get The Sunday Scarf</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="kicker">USMNT &nbsp;&bull;&nbsp; MLS &nbsp;&bull;&nbsp; The American Game</div>
+  <h1>Stars<span class="star">&#9733;</span><span class="amp">&amp;</span><span class="star">&#9733;</span>Scarves</h1>
+  <div class="tagline">Where American soccer argues.</div>
+</header>
+
+<nav>
+  <ul class="wrap">
+    <li><a class="hot" href="#">World Cup 2026</a></li>
+    <li><a href="#">USMNT</a></li>
+    <li><a href="#">MLS</a></li>
+    <li><a href="#">Takes</a></li>
+    <li><a href="#section">The Section</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="cat-tag">The Lead</span>
+        <h2><a href="#">This World Cup Changed American Soccer Forever. The Hard Part Starts July 20.</a></h2>
+        <p class="standfirst">For one month, every bar in this country turned into a supporters section. The question nobody in charge wants to answer: what happens when the circus leaves and the league it leaves behind still kicks off on a Wednesday at 10:45pm Eastern? An opening argument.</p>
+        <p class="byline">By <strong>Derek Benson</strong> &nbsp;&bull;&nbsp; Opinion &nbsp;&bull;&nbsp; 8 min read</p>
+      </div>
+      <aside class="hero-art">
+        <div class="label">World Cup 2026 &bull; On Home Soil</div>
+        <div class="big">The Final Is Coming</div>
+        <p>MetLife Stadium, July 19. The biggest soccer match ever played in this country, and the last day of the greatest onboarding event American soccer will ever get.</p>
+        <div class="count">12 Days<small>Until the whistle</small></div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="section-head">
+      <h3><span class="star">&#9733;</span>Latest Takes</h3>
+      <div class="line"></div>
+    </div>
+    <section class="grid">
+      <article class="card">
+        <span class="cat-tag navy">USMNT</span>
+        <h4><a href="#">The Federation Doesn't Get to Take Credit for This Summer</a></h4>
+        <p>The fans built this. The players built this. The people sending out the press releases were the last ones to show up, and somebody has to say it in print.</p>
+        <p class="byline">By <strong>Derek Benson</strong></p>
+      </article>
+      <article class="card">
+        <span class="cat-tag">MLS</span>
+        <h4><a href="#">MLS Has Three Weeks to Bottle Lightning. Here Is the Bet I Would Make.</a></h4>
+        <p>Ten million new fans just learned the rules. A league that markets itself like a regional furniture store is about to fumble them, unless it does these four things immediately.</p>
+        <p class="byline">By <strong>Derek Benson</strong></p>
+      </article>
+      <article class="card">
+        <span class="cat-tag navy">Takes</span>
+        <h4><a href="#">Your Euro Snob Friend Is Watching MLS Now. Be Nice to Him.</a></h4>
+        <p>A field guide to the five types of new American soccer fan minted this summer, and how to keep every single one of them through the fall.</p>
+        <p class="byline">By <strong>Derek Benson</strong></p>
+      </article>
+    </section>
+  </div>
+
+  <section class="section-band" id="section">
+    <div class="wrap">
+      <div>
+        <div class="label">The Section &bull; Pensacola</div>
+        <h3>Never Watch a Match Alone Again</h3>
+        <p>Stars and Scarves is a journal with a bar tab. The Section is our home crew in Pensacola: watch parties for every USMNT match and the big MLS nights, real fans, loud opinions, and the occasional post-match column written on a napkin. First scarf drop coming this fall.</p>
+      </div>
+      <div class="party-card">
+        <div class="label">Next Watch Party</div>
+        <h4>World Cup Semifinal Week</h4>
+        <p>Downtown Pensacola. Venue announcement dropping on Instagram this week. Doors open one hour before kickoff. Scarves up.</p>
+        <a class="btn" href="#">Join The Section</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter" id="newsletter">
+    <h3>The Sunday Scarf</h3>
+    <p>One email every Sunday morning. The week in American soccer, the take you will be arguing about by Tuesday, and what The Section is watching next. Free forever.</p>
+    <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='You\'re In ★';">
+      <input type="email" placeholder="your@email.com" required>
+      <button type="submit">Sign Me Up</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="mark">Stars <span class="star">&#9733;</span> and <span class="star">&#9733;</span> Scarves</div>
+  <div>Pensacola, Florida &nbsp;&bull;&nbsp; Independent American soccer journal &nbsp;&bull;&nbsp; Est. 2026</div>
+  <div class="note">Homepage mockup. Not live yet. All headlines are brand-voice samples.</div>
+</footer>
+
+</body>
+</html>
