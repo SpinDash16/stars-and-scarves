@@ -366,8 +366,8 @@
   }
   .pk-saved {
     position: absolute;
-    right: calc(4% + 70px);
-    bottom: 88px;
+    right: calc(4% + 120px);
+    bottom: 58px;
     font-family: var(--headline);
     font-size: 17px;
     font-weight: 900;
@@ -381,8 +381,8 @@
   }
   .pk-goaltext {
     position: absolute;
-    right: calc(4% + 40px);
-    bottom: 74px;
+    right: calc(4% + 118px);
+    bottom: 50px;
     font-family: var(--headline);
     font-size: 30px;
     font-weight: 900;
@@ -788,7 +788,8 @@
   var ball = strip.querySelector('.pk-ball');
   var caption = strip.querySelector('.pk-caption');
   var attempt = 4092;
-  ball.addEventListener('animationiteration', function () {
+  ball.addEventListener('animationiteration', function (e) {
+    if (e.animationName !== 'pk-ball-travel' && e.animationName !== 'pk-ball-goal') return;
     attempt++;
     var isGoal = attempt % 10 === 0;
     strip.classList.toggle('goal', isGoal);
